@@ -1,0 +1,52 @@
+# NLE Bike - Docker Compose Configuration
+# Author: MiniMax Agent
+
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "80:8000"
+    environment:
+      - API_HOST=0.0.0.0
+      - API_PORT=8000
+      - DEBUG=false
+      - DATABASE_PATH=/app/data/inventory.db
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  inventory-manager:
+    build: .
+    command: python backend/inventory_manager.py
+    depends_on:
+      - web
+    environment:
+      - DATABASE_PATH=/app/data/inventory.db
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/ssl/private:ro
+    depends_on:
+      - web
+    restart: unless-stopped
+
+volumes:
+  data:
+  logs:

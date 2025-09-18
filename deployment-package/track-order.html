@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Order - NLE Bike</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h2>NLE BIKE</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="track-order.html" class="active">Track Order</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="track-order-section">
+            <div class="container">
+                <h1>Track Your Order</h1>
+                <div class="tracking-form">
+                    <h2>Enter Your Order Information</h2>
+                    <form>
+                        <div class="form-group">
+                            <label for="order-id">Order ID</label>
+                            <input type="text" id="order-id" name="order-id" placeholder="NLE-12345678" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Track Order</button>
+                    </form>
+                </div>
+                
+                <div class="order-status" style="display: none;">
+                    <h2>Order Status</h2>
+                    <div class="status-timeline">
+                        <div class="status-item completed">
+                            <div class="status-icon">✓</div>
+                            <div class="status-text">
+                                <h3>Order Confirmed</h3>
+                                <p>Your order has been received and confirmed</p>
+                            </div>
+                        </div>
+                        
+                        <div class="status-item completed">
+                            <div class="status-icon">✓</div>
+                            <div class="status-text">
+                                <h3>Processing</h3>
+                                <p>Your order is being prepared for shipment</p>
+                            </div>
+                        </div>
+                        
+                        <div class="status-item active">
+                            <div class="status-icon">🚚</div>
+                            <div class="status-text">
+                                <h3>Shipped</h3>
+                                <p>Your order is on its way</p>
+                                <p><strong>Tracking #:</strong> 1Z999999999999</p>
+                            </div>
+                        </div>
+                        
+                        <div class="status-item">
+                            <div class="status-icon">📦</div>
+                            <div class="status-text">
+                                <h3>Delivered</h3>
+                                <p>Your order has been delivered</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 NLE Bike. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

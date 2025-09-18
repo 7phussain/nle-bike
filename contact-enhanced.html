@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - NLE Bike Customer Support</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/advanced-features.css">
+    <meta name="description" content="Contact NLE Bike for expert e-bike support, product questions, and customer service. Multiple ways to reach our team.">
+    <style>
+        .contact-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+        
+        .contact-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .contact-form-section {
+            background: #f8f9fa;
+            padding: 80px 0;
+        }
+        
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e1e8ed;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+        
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .priority-selector {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .priority-option {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #e1e8ed;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .priority-option.selected {
+            border-color: #007bff;
+            background: #007bff;
+            color: white;
+        }
+        
+        .file-upload {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        
+        .file-upload input[type=file] {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        
+        .file-upload-button {
+            display: block;
+            padding: 12px 15px;
+            border: 2px dashed #007bff;
+            border-radius: 8px;
+            text-align: center;
+            color: #007bff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .file-upload-button:hover {
+            background: #f8f9fa;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,123,255,0.3);
+        }
+        
+        .live-chat {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #007bff;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: 0 5px 20px rgba(0,123,255,0.4);
+            cursor: pointer;
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0,123,255,0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(0,123,255,0); }
+            100% { box-shadow: 0 0 0 0 rgba(0,123,255,0); }
+        }
+        
+        .faq-quick-links {
+            background: #e9ecef;
+            padding: 40px;
+            border-radius: 15px;
+            margin: 40px 0;
+        }
+        
+        .faq-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .faq-link {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-link:hover {
+            background: #007bff;
+            color: white;
+        }
+        
+        .business-hours {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 30px 0;
+        }
+        
+        .success-message {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .error-message {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-container {
+                padding: 30px 20px;
+            }
+            
+            .priority-selector {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="NLE Bike" class="logo">
+                    <span>NLE BIKE</span>
+                </a>
+            </div>
+            
+            <div class="nav-menu">
+                <div class="mega-menu-trigger">
+                    <a href="index.html">🏠 Home</a>
+                </div>
+                
+                <div class="mega-menu-trigger">
+                    <span>🚴‍♂️ E-Bikes</span>
+                    <div class="mega-menu">
+                        <div class="mega-menu-content">
+                            <div class="menu-column">
+                                <h3>By Category</h3>
+                                <a href="products.html?category=fat-tire">Fat Tire Bikes</a>
+                                <a href="products.html?category=folding">Folding Bikes</a>
+                                <a href="products.html?category=commuter">Commuter Bikes</a>
+                                <a href="products.html?category=mountain">Mountain Bikes</a>
+                                <a href="products.html?category=cargo">Cargo Bikes</a>
+                            </div>
+                            <div class="menu-column">
+                                <h3>By Brand</h3>
+                                <a href="products.html?brand=engwe">ENGWE</a>
+                                <a href="products.html?brand=featured">Featured Models</a>
+                                <a href="products.html">All Products</a>
+                            </div>
+                            <div class="menu-column">
+                                <h3>Price Range</h3>
+                                <a href="products.html?price=under-1000">Under $1,000</a>
+                                <a href="products.html?price=1000-1500">$1,000 - $1,500</a>
+                                <a href="products.html?price=over-1500">Over $1,500</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mega-menu-trigger">
+                    <span>🔧 Parts & Accessories</span>
+                    <div class="mega-menu">
+                        <div class="mega-menu-content">
+                            <div class="menu-column">
+                                <h3>Essential Parts</h3>
+                                <a href="accessories.html?cat=batteries">Batteries</a>
+                                <a href="accessories.html?cat=chargers">Chargers</a>
+                                <a href="accessories.html?cat=tires">Tires & Tubes</a>
+                                <a href="accessories.html?cat=brakes">Brakes</a>
+                            </div>
+                            <div class="menu-column">
+                                <h3>Accessories</h3>
+                                <a href="accessories.html?cat=helmets">Helmets</a>
+                                <a href="accessories.html?cat=lights">Lights</a>
+                                <a href="accessories.html?cat=locks">Locks</a>
+                                <a href="accessories.html?cat=bags">Bags & Racks</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mega-menu-trigger">
+                    <a href="about.html">ℹ️ About</a>
+                </div>
+                
+                <div class="mega-menu-trigger">
+                    <a href="contact.html" class="active">📞 Contact</a>
+                </div>
+                
+                <div class="mega-menu-trigger">
+                    <a href="faq.html">❓ FAQ</a>
+                </div>
+                
+                <div class="nav-actions">
+                    <a href="track-order.html" class="track-btn">📦 Track Order</a>
+                    <a href="wishlist.html" class="wishlist-btn">❤️ <span id="wishlist-count">0</span></a>
+                    <a href="cart.html" class="cart-btn">🛒 <span id="cart-count">0</span></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Contact Hero -->
+        <section class="contact-hero">
+            <div class="container">
+                <h1>Contact Our E-Bike Experts</h1>
+                <p>Get personalized support for all your ENGWE e-bike needs</p>
+                <div class="business-hours">
+                    <strong>🕐 Customer Service Hours:</strong><br>
+                    Monday - Friday: 9:00 AM - 6:00 PM EST<br>
+                    Saturday: 10:00 AM - 4:00 PM EST<br>
+                    Sunday: Closed
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Methods -->
+        <section class="contact-section">
+            <div class="container">
+                <h2>Multiple Ways to Reach Us</h2>
+                <div class="contact-methods">
+                    <div class="contact-card">
+                        <span class="contact-icon">💬</span>
+                        <h3>Live Chat</h3>
+                        <p>Instant support from our e-bike specialists</p>
+                        <p><strong>Available:</strong> Mon-Fri 9AM-6PM EST</p>
+                        <button onclick="openLiveChat()" class="btn-primary">Start Chat</button>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <span class="contact-icon">📞</span>
+                        <h3>Phone Support</h3>
+                        <p>Speak directly with our customer service team</p>
+                        <p><strong>Call:</strong> <a href="tel:1-800-653-2453">1-800-NLE-BIKE</a></p>
+                        <a href="tel:1-800-653-2453" class="btn-primary">Call Now</a>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <span class="contact-icon">📧</span>
+                        <h3>Email Support</h3>
+                        <p>Detailed responses within 24 hours</p>
+                        <p><strong>Email:</strong> <a href="mailto:support@nlebike.com">support@nlebike.com</a></p>
+                        <a href="mailto:support@nlebike.com" class="btn-primary">Send Email</a>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <span class="contact-icon">❓</span>
+                        <h3>Self-Help</h3>
+                        <p>Find instant answers to common questions</p>
+                        <p><strong>Available:</strong> 24/7</p>
+                        <a href="faq.html" class="btn-primary">Browse FAQ</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick FAQ Links -->
+        <section class="faq-quick-links">
+            <div class="container">
+                <h3>Popular Questions</h3>
+                <div class="faq-links">
+                    <a href="faq.html#shipping" class="faq-link">📦 Shipping & Delivery</a>
+                    <a href="faq.html#warranty" class="faq-link">🛡️ Warranty Coverage</a>
+                    <a href="faq.html#returns" class="faq-link">🔄 Returns & Exchanges</a>
+                    <a href="faq.html#technical" class="faq-link">🔧 Technical Support</a>
+                    <a href="faq.html#products" class="faq-link">🚴‍♂️ Product Information</a>
+                    <a href="faq.html#financing" class="faq-link">💳 Financing Options</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form -->
+        <section class="contact-form-section">
+            <div class="container">
+                <div class="form-container">
+                    <h2>Send Us a Message</h2>
+                    <p>Fill out the form below and we'll get back to you as soon as possible.</p>
+                    
+                    <div class="success-message" id="success-message">
+                        ✅ Thank you! Your message has been sent successfully. We'll respond within 24 hours.
+                    </div>
+                    
+                    <div class="error-message" id="error-message">
+                        ❌ There was an error sending your message. Please try again or contact us directly.
+                    </div>
+                    
+                    <form id="contact-form" onsubmit="submitContactForm(event)">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="first-name">First Name *</label>
+                                <input type="text" id="first-name" name="firstName" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="last-name">Last Name *</label>
+                                <input type="text" id="last-name" name="lastName" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <select id="subject" name="subject" required onchange="handleSubjectChange()">
+                                <option value="">Select a topic</option>
+                                <option value="product-question">Product Question</option>
+                                <option value="order-inquiry">Order Inquiry</option>
+                                <option value="technical-support">Technical Support</option>
+                                <option value="warranty-claim">Warranty Claim</option>
+                                <option value="return-exchange">Return/Exchange</option>
+                                <option value="shipping-delivery">Shipping & Delivery</option>
+                                <option value="billing-payment">Billing & Payment</option>
+                                <option value="partnership">Partnership Inquiry</option>
+                                <option value="feedback">Feedback & Suggestions</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group" id="order-number-group" style="display: none;">
+                            <label for="order-number">Order Number</label>
+                            <input type="text" id="order-number" name="orderNumber" placeholder="e.g., NLE-2025-001234">
+                        </div>
+                        
+                        <div class="form-group" id="product-group" style="display: none;">
+                            <label for="product">Product of Interest</label>
+                            <select id="product" name="product">
+                                <option value="">Select a product</option>
+                                <option value="engwe-engine-x">ENGWE Engine X</option>
+                                <option value="engwe-engine-pro">ENGWE Engine Pro 2.0</option>
+                                <option value="engwe-p20">ENGWE P20</option>
+                                <option value="engwe-m20">ENGWE M20</option>
+                                <option value="engwe-charger">ENGWE Charger</option>
+                                <option value="accessories">Accessories</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="priority">Priority Level</label>
+                            <div class="priority-selector">
+                                <div class="priority-option" onclick="selectPriority(this, 'low')">
+                                    🟢 Low<br><small>General inquiry</small>
+                                </div>
+                                <div class="priority-option selected" onclick="selectPriority(this, 'medium')">
+                                    🟡 Medium<br><small>Standard support</small>
+                                </div>
+                                <div class="priority-option" onclick="selectPriority(this, 'high')">
+                                    🔴 High<br><small>Urgent issue</small>
+                                </div>
+                            </div>
+                            <input type="hidden" id="priority" name="priority" value="medium">
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" placeholder="Please provide as much detail as possible to help us assist you better..." required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="attachment">Attach Files (Optional)</label>
+                            <div class="file-upload">
+                                <input type="file" id="attachment" name="attachment" multiple accept=".jpg,.jpeg,.png,.pdf,.doc,.docx">
+                                <div class="file-upload-button">
+                                    📎 Click to attach files (Images, PDFs, Documents)
+                                </div>
+                            </div>
+                            <small>Max file size: 10MB per file. Supported formats: JPG, PNG, PDF, DOC, DOCX</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" id="newsletter" name="newsletter" checked>
+                                Subscribe to our newsletter for product updates and exclusive offers
+                            </label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" id="privacy" name="privacy" required>
+                                I agree to the <a href="privacy.html" target="_blank">Privacy Policy</a> and consent to the processing of my personal data *
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <span id="submit-text">Send Message</span>
+                            <span id="submit-loading" style="display: none;">Sending... ⏳</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Additional Support Resources -->
+        <section class="support-resources">
+            <div class="container">
+                <h2>Additional Resources</h2>
+                <div class="contact-methods">
+                    <div class="contact-card">
+                        <span class="contact-icon">📚</span>
+                        <h3>User Manuals</h3>
+                        <p>Download comprehensive guides for your ENGWE e-bike</p>
+                        <a href="manuals.html" class="btn-primary">Download Manuals</a>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <span class="contact-icon">🎥</span>
+                        <h3>Video Tutorials</h3>
+                        <p>Watch step-by-step maintenance and setup guides</p>
+                        <a href="tutorials.html" class="btn-primary">Watch Videos</a>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <span class="contact-icon">👥</span>
+                        <h3>Community Forum</h3>
+                        <p>Connect with other e-bike enthusiasts and share experiences</p>
+                        <a href="community.html" class="btn-primary">Join Community</a>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <span class="contact-icon">📍</span>
+                        <h3>Service Centers</h3>
+                        <p>Find authorized service centers near you</p>
+                        <a href="service-centers.html" class="btn-primary">Find Centers</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Live Chat Widget -->
+    <div class="live-chat" onclick="openLiveChat()">
+        💬 Live Chat
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>NLE BIKE</h3>
+                    <p>Your premier destination for ENGWE electric bicycles and sustainable transportation solutions.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="YouTube">📹</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>📧 support@nlebike.com</p>
+                    <p>📞 1-800-NLE-BIKE</p>
+                    <p>🕐 Mon-Fri: 9AM-6PM EST</p>
+                    <p>📍 123 E-Bike Way, Innovation City, IC 12345</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">All Products</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="track-order.html">Track Order</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="shipping.html">Shipping Info</a></li>
+                        <li><a href="returns.html">Returns & Warranty</a></li>
+                        <li><a href="support.html">Technical Support</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 NLE Bike. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Form handling functions
+        function handleSubjectChange() {
+            const subject = document.getElementById('subject').value;
+            const orderNumberGroup = document.getElementById('order-number-group');
+            const productGroup = document.getElementById('product-group');
+            
+            // Show order number field for order-related inquiries
+            if (['order-inquiry', 'return-exchange', 'shipping-delivery', 'warranty-claim'].includes(subject)) {
+                orderNumberGroup.style.display = 'block';
+                document.getElementById('order-number').required = true;
+            } else {
+                orderNumberGroup.style.display = 'none';
+                document.getElementById('order-number').required = false;
+            }
+            
+            // Show product field for product-related inquiries
+            if (['product-question', 'technical-support', 'warranty-claim'].includes(subject)) {
+                productGroup.style.display = 'block';
+            } else {
+                productGroup.style.display = 'none';
+            }
+        }
+        
+        function selectPriority(element, priority) {
+            // Remove selected class from all options
+            document.querySelectorAll('.priority-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked option
+            element.classList.add('selected');
+            
+            // Update hidden input
+            document.getElementById('priority').value = priority;
+        }
+        
+        function submitContactForm(event) {
+            event.preventDefault();
+            
+            // Show loading state
+            document.getElementById('submit-text').style.display = 'none';
+            document.getElementById('submit-loading').style.display = 'inline';
+            
+            // Collect form data
+            const formData = new FormData(event.target);
+            const contactData = {
+                firstName: formData.get('firstName'),
+                lastName: formData.get('lastName'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                subject: formData.get('subject'),
+                orderNumber: formData.get('orderNumber'),
+                product: formData.get('product'),
+                priority: formData.get('priority'),
+                message: formData.get('message'),
+                newsletter: formData.get('newsletter') === 'on',
+                timestamp: new Date().toISOString(),
+                userAgent: navigator.userAgent,
+                referrer: document.referrer
+            };
+            
+            // Simulate form submission (replace with actual API call)
+            setTimeout(() => {
+                // Track contact form submission
+                if (typeof trackBehavior === 'function') {
+                    trackBehavior('contact_form_submit', contactData);
+                }
+                
+                // Show success message
+                document.getElementById('success-message').style.display = 'block';
+                document.getElementById('error-message').style.display = 'none';
+                
+                // Reset form
+                event.target.reset();
+                selectPriority(document.querySelector('.priority-option:nth-child(2)'), 'medium');
+                
+                // Reset button state
+                document.getElementById('submit-text').style.display = 'inline';
+                document.getElementById('submit-loading').style.display = 'none';
+                
+                // Hide form fields
+                document.getElementById('order-number-group').style.display = 'none';
+                document.getElementById('product-group').style.display = 'none';
+                
+                // Scroll to success message
+                document.getElementById('success-message').scrollIntoView({ behavior: 'smooth' });
+                
+                // If newsletter was checked, trigger email subscription
+                if (contactData.newsletter) {
+                    subscribeToNewsletter(contactData.email);
+                }
+                
+                // Auto-hide success message after 10 seconds
+                setTimeout(() => {
+                    document.getElementById('success-message').style.display = 'none';
+                }, 10000);
+                
+            }, 2000);
+        }
+        
+        function openLiveChat() {
+            // Track live chat interaction
+            if (typeof trackBehavior === 'function') {
+                trackBehavior('live_chat_open', {
+                    source: 'contact_page',
+                    timestamp: new Date().toISOString()
+                });
+            }
+            
+            // In a real implementation, this would open your live chat widget
+            alert('Live chat would open here. This would integrate with services like Intercom, Zendesk Chat, or custom chat solution.');
+        }
+        
+        function subscribeToNewsletter(email) {
+            // Track newsletter subscription
+            if (typeof trackBehavior === 'function') {
+                trackBehavior('newsletter_subscribe', {
+                    email: email,
+                    source: 'contact_form',
+                    timestamp: new Date().toISOString()
+                });
+            }
+        }
+        
+        // File upload handling
+        document.getElementById('attachment').addEventListener('change', function(e) {
+            const files = Array.from(e.target.files);
+            const button = document.querySelector('.file-upload-button');
+            
+            if (files.length > 0) {
+                const fileNames = files.map(f => f.name).join(', ');
+                button.textContent = `📎 ${files.length} file(s) selected: ${fileNames}`;
+            } else {
+                button.textContent = '📎 Click to attach files (Images, PDFs, Documents)';
+            }
+        });
+        
+        // Track page visit
+        if (typeof trackBehavior === 'function') {
+            trackBehavior('page_view', {
+                page: 'contact',
+                timestamp: new Date().toISOString()
+            });
+        }
+    </script>
+    
+    <script src="js/app.js"></script>
+    <script src="js/advanced-features.js"></script>
+</body>
+</html>

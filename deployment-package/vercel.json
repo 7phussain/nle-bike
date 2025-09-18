@@ -1,0 +1,29 @@
+# ElectroRide Pro - Vercel Deployment
+# Author: MiniMax Agent
+
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "backend/api_server.py",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "static/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "backend/api_server.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ],
+  "env": {
+    "DATABASE_PATH": "/tmp/inventory.db"
+  }
+}

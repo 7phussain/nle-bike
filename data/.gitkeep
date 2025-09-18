@@ -1,0 +1,9 @@
+# Data directory
+# This directory stores the SQLite database and other data files
+
+# inventory.db - Main SQLite database containing product information
+# backups/ - Database backup files (created automatically)
+# cache/ - Temporary cache files
+
+# The database is automatically created when the application starts
+# Backup your database regularly for production use

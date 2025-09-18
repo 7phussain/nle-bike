@@ -1,0 +1,28 @@
+# ElectroRide Pro - AWS Elastic Beanstalk Configuration
+# Author: MiniMax Agent
+
+version: 1
+config:
+  platform:
+    PlatformArn: arn:aws:elasticbeanstalk:us-east-1::platform/Python 3.11 running on 64bit Amazon Linux 2023/4.0.0
+  application:
+    max_count_rule:
+      enabled: true
+      max_count: 200
+      delete_source_from_s3: true
+    max_age_rule:
+      enabled: true
+      max_age_in_days: 180
+      delete_source_from_s3: true
+  monitoring:
+    system_type: enhanced
+    config_document:
+      version: "1"
+      rules:
+        - rule_name: "health_check"
+          targets:
+            - name: "ApplicationTarget"
+          actions:
+            - name: "alert"
+              parameters:
+                notificationEndpoint: "your-email@example.com"

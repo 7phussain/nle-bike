@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENGWE E-Bikes - Premium Electric Bicycles | NLE Bike</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/advanced-features.css">
+    <meta name="description" content="Shop premium ENGWE electric bicycles at NLE Bike. Fat tire, folding, and commuter e-bikes with advanced features and warranties.">
+    <style>
+        .products-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .filters-section {
+            background: #f8f9fa;
+            padding: 30px 0;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .filters-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .filter-group label {
+            font-weight: 600;
+            color: #495057;
+        }
+        
+        .filter-group select {
+            padding: 8px 12px;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            background: white;
+        }
+        
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 10px 40px 10px 15px;
+            border: 1px solid #ced4da;
+            border-radius: 25px;
+            font-size: 16px;
+        }
+        
+        .search-box .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 40px 0;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .product-image {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #28a745;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+        
+        .product-badge.new { background: #007bff; }
+        .product-badge.sale { background: #dc3545; }
+        .product-badge.popular { background: #ffc107; color: #212529; }
+        
+        .wishlist-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255,255,255,0.9);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .wishlist-btn:hover {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .wishlist-btn.active {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .product-info {
+            padding: 25px;
+        }
+        
+        .product-name {
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .product-description {
+            color: #6c757d;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .product-specs {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-size: 0.8em;
+        }
+        
+        .product-spec {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #495057;
+        }
+        
+        .product-pricing {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .product-price {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #28a745;
+        }
+        
+        .product-original-price {
+            font-size: 1.1em;
+            color: #6c757d;
+            text-decoration: line-through;
+        }
+        
+        .product-discount {
+            background: #dc3545;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn-add-cart {
+            flex: 1;
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-add-cart:hover {
+            background: #0056b3;
+            transform: translateY(-1px);
+        }
+        
+        .btn-quick-view {
+            background: #f8f9fa;
+            color: #495057;
+            border: 1px solid #dee2e6;
+            padding: 12px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-quick-view:hover {
+            background: #e9ecef;
+        }
+        
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+        
+        .stars {
+            color: #ffc107;
+        }
+        
+        .rating-count {
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 40px 0;
+        }
+        
+        .pagination button {
+            background: white;
+            border: 1px solid #dee2e6;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .pagination button:hover,
+        .pagination button.active {
+            background: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+        
+        .results-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            color: #6c757d;
+        }
+        
+        .sort-options {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #007bff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: #6c757d;
+        }
+        
+        .compare-panel {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 2px solid #007bff;
+            padding: 15px;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .compare-panel.active {
+            transform: translateY(0);
+        }
+        
+        .compare-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .compare-items {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .compare-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        
+        .compare-item img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+        
+        @media (max-width: 768px) {
+            .filters-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .filter-group {
+                justify-content: space-between;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 20px;
+            }
+            
+            .compare-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="NLE Bike" class="logo">
+                    <span>NLE BIKE</span>
+                </a>
+            </div>
+            
+            <div class="nav-menu">
+                <div class="mega-menu-trigger">
+                    <a href="index.html">🏠 Home</a>
+                </div>
+                
+                <div class="mega-menu-trigger">
+                    <span>🚴‍♂️ E-Bikes</span>
+                    <div class="mega-menu">
+                        <div class="mega-menu-content">
+                            <div class="menu-column">
+                                <h3>By Category</h3>
+                                <a href="products.html?category=fat-tire">Fat Tire Bikes</a>
+                                <a href="products.html?category=folding">Folding Bikes</a>
+                                <a href="products.html?category=commuter">Commuter Bikes</a>
+                                <a href="products.html?category=mountain">Mountain Bikes</a>
+                                <a href="products.html?category=cargo">Cargo Bikes</a>
+                            </div>
+                            <div class="menu-column">
+                                <h3>By Brand</h3>
+                                <a href="products.html?brand=engwe">ENGWE</a>
+                                <a href="products.html?brand=featured">Featured Models</a>
+                                <a href="products.html">All Products</a>
+                            </div>
+                            <div class="menu-column">
+                                <h3>Price Range</h3>
+                                <a href="products.html?price=under-1000">Under $1,000</a>
+                                <a href="products.html?price=1000-1500">$1,000 - $1,500</a>
+                                <a href="products.html?price=over-1500">Over $1,500</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mega-menu-trigger">
+                    <span>🔧 Parts & Accessories</span>
+                    <div class="mega-menu">
+                        <div class="mega-menu-content">
+                            <div class="menu-column">
+                                <h3>Essential Parts</h3>
+                                <a href="accessories.html?cat=batteries">Batteries</a>
+                                <a href="accessories.html?cat=chargers">Chargers</a>
+                                <a href="accessories.html?cat=tires">Tires & Tubes</a>
+                                <a href="accessories.html?cat=brakes">Brakes</a>
+                            </div>
+                            <div class="menu-column">
+                                <h3>Accessories</h3>
+                                <a href="accessories.html?cat=helmets">Helmets</a>
+                                <a href="accessories.html?cat=lights">Lights</a>
+                                <a href="accessories.html?cat=locks">Locks</a>
+                                <a href="accessories.html?cat=bags">Bags & Racks</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mega-menu-trigger">
+                    <a href="about.html">ℹ️ About</a>
+                </div>
+                
+                <div class="mega-menu-trigger">
+                    <a href="contact.html">📞 Contact</a>
+                </div>
+                
+                <div class="mega-menu-trigger">
+                    <a href="faq.html">❓ FAQ</a>
+                </div>
+                
+                <div class="nav-actions">
+                    <a href="track-order.html" class="track-btn">📦 Track Order</a>
+                    <a href="wishlist.html" class="wishlist-btn">❤️ <span id="wishlist-count">0</span></a>
+                    <a href="cart.html" class="cart-btn">🛒 <span id="cart-count">0</span></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Products Hero -->
+        <section class="products-hero">
+            <div class="container">
+                <h1>Premium ENGWE Electric Bicycles</h1>
+                <p>Discover the perfect e-bike for your lifestyle - from urban commuting to off-road adventures</p>
+            </div>
+        </section>
+
+        <!-- Filters Section -->
+        <section class="filters-section">
+            <div class="container">
+                <div class="filters-container">
+                    <div class="search-box" style="position: relative;">
+                        <input type="text" id="search-input" placeholder="Search e-bikes..." oninput="searchProducts()">
+                        <span class="search-icon">🔍</span>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="category-filter">Category:</label>
+                        <select id="category-filter" onchange="filterProducts()">
+                            <option value="">All Categories</option>
+                            <option value="fat-tire">Fat Tire</option>
+                            <option value="folding">Folding</option>
+                            <option value="commuter">Commuter</option>
+                            <option value="transportation">Transportation</option>
+                            <option value="motorcycle-styled">Motorcycle Style</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="price-filter">Price Range:</label>
+                        <select id="price-filter" onchange="filterProducts()">
+                            <option value="">All Prices</option>
+                            <option value="under-1000">Under $1,000</option>
+                            <option value="1000-1500">$1,000 - $1,500</option>
+                            <option value="1500-2000">$1,500 - $2,000</option>
+                            <option value="over-2000">Over $2,000</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="sort-filter">Sort By:</label>
+                        <select id="sort-filter" onchange="sortProducts()">
+                            <option value="featured">Featured</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="name">Name A-Z</option>
+                            <option value="newest">Newest First</option>
+                        </select>
+                    </div>
+                    
+                    <button onclick="clearFilters()" class="btn-secondary">Clear Filters</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Grid -->
+        <section class="products-section">
+            <div class="container">
+                <div class="results-info">
+                    <span id="results-count">Loading products...</span>
+                    <div class="sort-options">
+                        <button onclick="toggleView('grid')" class="view-btn active" id="grid-view">🔳 Grid</button>
+                        <button onclick="toggleView('list')" class="view-btn" id="list-view">📋 List</button>
+                    </div>
+                </div>
+                
+                <div class="loading-spinner" id="loading-spinner">
+                    <div class="spinner"></div>
+                    <p>Loading premium ENGWE e-bikes...</p>
+                </div>
+                
+                <div class="products-grid" id="products-grid">
+                    <!-- Products will be loaded dynamically -->
+                </div>
+                
+                <div class="no-results" id="no-results" style="display: none;">
+                    <h3>No products found</h3>
+                    <p>Try adjusting your filters or search terms</p>
+                    <button onclick="clearFilters()" class="btn-primary">Clear Filters</button>
+                </div>
+                
+                <div class="pagination" id="pagination">
+                    <!-- Pagination will be generated dynamically -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Compare Panel -->
+    <div class="compare-panel" id="compare-panel">
+        <div class="compare-content">
+            <div class="compare-items" id="compare-items">
+                <!-- Compare items will be added dynamically -->
+            </div>
+            <div class="compare-actions">
+                <button onclick="compareProducts()" class="btn-primary">Compare Selected</button>
+                <button onclick="clearCompare()" class="btn-secondary">Clear All</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>NLE BIKE</h3>
+                    <p>Your premier destination for ENGWE electric bicycles and sustainable transportation solutions.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="products.html?category=fat-tire">Fat Tire E-Bikes</a></li>
+                        <li><a href="products.html?category=folding">Folding E-Bikes</a></li>
+                        <li><a href="products.html?category=commuter">Commuter E-Bikes</a></li>
+                        <li><a href="products.html?category=mountain">Mountain E-Bikes</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="contact.html">Contact Support</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="track-order.html">Track Order</a></li>
+                        <li><a href="returns.html">Returns & Warranty</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <p>📧 info@nlebike.com</p>
+                    <p>📞 1-800-NLE-BIKE</p>
+                    <p>🕐 Mon-Fri: 9AM-6PM EST</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 NLE Bike. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Products data (in real app, this would come from API)
+        const products = [
+            {
+                id: 'engwe-engine-x-001',
+                name: 'ENGWE Engine X',
+                description: 'Powerful fat tire e-bike with exceptional range and performance for all-terrain adventures.',
+                price: 1299.99,
+                originalPrice: null,
+                image: 'images/engwe-engine-x.jpg',
+                category: ['Fat Tire', 'Commuter'],
+                badge: 'Popular',
+                rating: 4.8,
+                reviewCount: 156,
+                specs: {
+                    range: '75 miles',
+                    speed: '20 mph',
+                    motor: '750W'
+                },
+                inStock: true,
+                isNew: false
+            },
+            {
+                id: 'engwe-engine-pro-002',
+                name: 'ENGWE Engine Pro 2.0',
+                description: 'Premium motorcycle-styled e-bike with advanced features and superior build quality.',
+                price: 1599.99,
+                originalPrice: null,
+                image: 'images/engwe-engine-pro.jpg',
+                category: ['Motorcycle-Styled', 'Commuter'],
+                badge: 'New',
+                rating: 4.9,
+                reviewCount: 89,
+                specs: {
+                    range: '90 miles',
+                    speed: '20 mph',
+                    motor: '750W'
+                },
+                inStock: true,
+                isNew: true
+            },
+            {
+                id: 'engwe-p20-003',
+                name: 'ENGWE P20',
+                description: 'Compact folding e-bike perfect for urban commuting and easy storage.',
+                price: 899.99,
+                originalPrice: null,
+                image: 'images/engwe-p20.jpg',
+                category: ['Folding', 'Commuter'],
+                badge: null,
+                rating: 4.6,
+                reviewCount: 203,
+                specs: {
+                    range: '65 miles',
+                    speed: '20 mph',
+                    motor: '500W'
+                },
+                inStock: true,
+                isNew: false
+            },
+            {
+                id: 'engwe-m20-004',
+                name: 'ENGWE M20',
+                description: 'Versatile fat tire e-bike designed for both city streets and off-road trails.',
+                price: 1099.99,
+                originalPrice: null,
+                image: 'images/engwe-m20.jpg',
+                category: ['Fat Tire', 'Transportation'],
+                badge: null,
+                rating: 4.7,
+                reviewCount: 134,
+                specs: {
+                    range: '70 miles',
+                    speed: '20 mph',
+                    motor: '750W'
+                },
+                inStock: true,
+                isNew: false
+            },
+            {
+                id: 'engwe-charger-005',
+                name: 'ENGWE Charger',
+                description: 'High-performance e-bike with exceptional power and range for serious riders.',
+                price: 1799.99,
+                originalPrice: null,
+                image: 'images/engwe-charger.jpg',
+                category: ['Transportation', 'Fat Tire', 'Commuter'],
+                badge: 'Premium',
+                rating: 4.9,
+                reviewCount: 67,
+                specs: {
+                    range: '80 miles',
+                    speed: '20 mph',
+                    motor: '1000W'
+                },
+                inStock: true,
+                isNew: false
+            }
+        ];
+
+        let filteredProducts = [...products];
+        let currentPage = 1;
+        const productsPerPage = 6;
+        let compareList = [];
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Parse URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const category = urlParams.get('category');
+            const priceRange = urlParams.get('price');
+            const brand = urlParams.get('brand');
+            
+            // Apply URL filters
+            if (category) {
+                document.getElementById('category-filter').value = category;
+            }
+            if (priceRange) {
+                document.getElementById('price-filter').value = priceRange;
+            }
+            
+            // Load products
+            setTimeout(() => {
+                filterProducts();
+                hideLoader();
+            }, 1000);
+            
+            // Track page view
+            trackBehavior('products_page_view', {
+                category: category,
+                priceRange: priceRange,
+                brand: brand
+            });
+        });
+
+        function hideLoader() {
+            document.getElementById('loading-spinner').style.display = 'none';
+        }
+
+        function filterProducts() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+            const categoryFilter = document.getElementById('category-filter').value;
+            const priceFilter = document.getElementById('price-filter').value;
+            
+            filteredProducts = products.filter(product => {
+                // Search filter
+                const matchesSearch = !searchTerm || 
+                    product.name.toLowerCase().includes(searchTerm) ||
+                    product.description.toLowerCase().includes(searchTerm) ||
+                    product.category.some(cat => cat.toLowerCase().includes(searchTerm));
+                
+                // Category filter
+                const matchesCategory = !categoryFilter || 
+                    product.category.some(cat => cat.toLowerCase().replace(' ', '-') === categoryFilter);
+                
+                // Price filter
+                let matchesPrice = true;
+                if (priceFilter) {
+                    switch (priceFilter) {
+                        case 'under-1000':
+                            matchesPrice = product.price < 1000;
+                            break;
+                        case '1000-1500':
+                            matchesPrice = product.price >= 1000 && product.price <= 1500;
+                            break;
+                        case '1500-2000':
+                            matchesPrice = product.price >= 1500 && product.price <= 2000;
+                            break;
+                        case 'over-2000':
+                            matchesPrice = product.price > 2000;
+                            break;
+                    }
+                }
+                
+                return matchesSearch && matchesCategory && matchesPrice;
+            });
+            
+            currentPage = 1;
+            sortProducts();
+            
+            // Track filter usage
+            trackBehavior('products_filtered', {
+                searchTerm: searchTerm,
+                category: categoryFilter,
+                priceRange: priceFilter,
+                resultCount: filteredProducts.length
+            });
+        }
+
+        function sortProducts() {
+            const sortBy = document.getElementById('sort-filter').value;
+            
+            switch (sortBy) {
+                case 'price-low':
+                    filteredProducts.sort((a, b) => a.price - b.price);
+                    break;
+                case 'price-high':
+                    filteredProducts.sort((a, b) => b.price - a.price);
+                    break;
+                case 'name':
+                    filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+                    break;
+                case 'newest':
+                    filteredProducts.sort((a, b) => b.isNew - a.isNew);
+                    break;
+                case 'featured':
+                default:
+                    // Keep original order for featured
+                    break;
+            }
+            
+            renderProducts();
+        }
+
+        function renderProducts() {
+            const grid = document.getElementById('products-grid');
+            const noResults = document.getElementById('no-results');
+            const resultsCount = document.getElementById('results-count');
+            
+            if (filteredProducts.length === 0) {
+                grid.style.display = 'none';
+                noResults.style.display = 'block';
+                resultsCount.textContent = 'No products found';
+                return;
+            }
+            
+            grid.style.display = 'grid';
+            noResults.style.display = 'none';
+            
+            // Pagination
+            const startIndex = (currentPage - 1) * productsPerPage;
+            const endIndex = startIndex + productsPerPage;
+            const pageProducts = filteredProducts.slice(startIndex, endIndex);
+            
+            // Update results count
+            resultsCount.textContent = `Showing ${startIndex + 1}-${Math.min(endIndex, filteredProducts.length)} of ${filteredProducts.length} products`;
+            
+            // Render products
+            grid.innerHTML = pageProducts.map(product => createProductCard(product)).join('');
+            
+            // Render pagination
+            renderPagination();
+        }
+
+        function createProductCard(product) {
+            const badgeHtml = product.badge ? `<div class="product-badge ${product.badge.toLowerCase()}">${product.badge}</div>` : '';
+            const discountHtml = product.originalPrice ? `
+                <span class="product-original-price">$${product.originalPrice}</span>
+                <span class="product-discount">-${Math.round((1 - product.price / product.originalPrice) * 100)}%</span>
+            ` : '';
+            
+            return `
+                <div class="product-card" data-product-id="${product.id}">
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.name}" loading="lazy" onerror="this.src='images/placeholder-bike.jpg'">
+                        ${badgeHtml}
+                        <button class="wishlist-btn" onclick="toggleWishlist('${product.id}')" title="Add to wishlist">
+                            ❤️
+                        </button>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-rating">
+                            <span class="stars">${'★'.repeat(Math.floor(product.rating))}${'☆'.repeat(5 - Math.floor(product.rating))}</span>
+                            <span class="rating-count">(${product.reviewCount})</span>
+                        </div>
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-description">${product.description}</p>
+                        <div class="product-specs">
+                            <div class="product-spec">
+                                <span>🔋</span>
+                                <span>${product.specs.range}</span>
+                            </div>
+                            <div class="product-spec">
+                                <span>⚡</span>
+                                <span>${product.specs.speed}</span>
+                            </div>
+                            <div class="product-spec">
+                                <span>🔧</span>
+                                <span>${product.specs.motor}</span>
+                            </div>
+                        </div>
+                        <div class="product-pricing">
+                            <span class="product-price">$${product.price.toLocaleString()}</span>
+                            ${discountHtml}
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-add-cart" onclick="addToCartFromGrid('${product.id}')">
+                                Add to Cart
+                            </button>
+                            <button class="btn-quick-view" onclick="quickView('${product.id}')" title="Quick view">
+                                👁️
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderPagination() {
+            const pagination = document.getElementById('pagination');
+            const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+            
+            if (totalPages <= 1) {
+                pagination.innerHTML = '';
+                return;
+            }
+            
+            let paginationHtml = '';
+            
+            // Previous button
+            if (currentPage > 1) {
+                paginationHtml += `<button onclick="changePage(${currentPage - 1})">← Previous</button>`;
+            }
+            
+            // Page numbers
+            for (let i = 1; i <= totalPages; i++) {
+                if (i === currentPage) {
+                    paginationHtml += `<button class="active">${i}</button>`;
+                } else {
+                    paginationHtml += `<button onclick="changePage(${i})">${i}</button>`;
+                }
+            }
+            
+            // Next button
+            if (currentPage < totalPages) {
+                paginationHtml += `<button onclick="changePage(${currentPage + 1})">Next →</button>`;
+            }
+            
+            pagination.innerHTML = paginationHtml;
+        }
+
+        function changePage(page) {
+            currentPage = page;
+            renderProducts();
+            
+            // Scroll to top of products
+            document.querySelector('.products-section').scrollIntoView({ behavior: 'smooth' });
+            
+            // Track pagination
+            trackBehavior('pagination_click', { page: page });
+        }
+
+        function addToCartFromGrid(productId) {
+            const product = products.find(p => p.id === productId);
+            if (product) {
+                addToCart({
+                    productId: product.id,
+                    productName: product.name,
+                    price: product.price,
+                    quantity: 1,
+                    imageUrl: product.image
+                });
+                
+                // Track add to cart from products page
+                trackBehavior('add_to_cart_from_grid', {
+                    productId: productId,
+                    source: 'products_page'
+                });
+            }
+        }
+
+        function toggleWishlist(productId) {
+            const product = products.find(p => p.id === productId);
+            if (product) {
+                addToWishlist({
+                    productId: product.id,
+                    productName: product.name,
+                    price: product.price,
+                    imageUrl: product.image,
+                    category: product.category[0]
+                });
+                
+                // Update button state
+                const button = document.querySelector(`[data-product-id="${productId}"] .wishlist-btn`);
+                button.classList.toggle('active');
+            }
+        }
+
+        function quickView(productId) {
+            const product = products.find(p => p.id === productId);
+            if (product) {
+                // Track quick view
+                trackBehavior('quick_view', {
+                    productId: productId,
+                    source: 'products_page'
+                });
+                
+                // In a real app, this would open a modal with product details
+                window.location.href = `product.html?id=${productId}`;
+            }
+        }
+
+        function searchProducts() {
+            // Debounce search
+            clearTimeout(window.searchTimeout);
+            window.searchTimeout = setTimeout(() => {
+                filterProducts();
+            }, 300);
+        }
+
+        function clearFilters() {
+            document.getElementById('search-input').value = '';
+            document.getElementById('category-filter').value = '';
+            document.getElementById('price-filter').value = '';
+            document.getElementById('sort-filter').value = 'featured';
+            
+            // Update URL
+            window.history.pushState({}, '', window.location.pathname);
+            
+            filterProducts();
+            
+            // Track filter clear
+            trackBehavior('filters_cleared', {});
+        }
+
+        function toggleView(viewType) {
+            const gridBtn = document.getElementById('grid-view');
+            const listBtn = document.getElementById('list-view');
+            const grid = document.getElementById('products-grid');
+            
+            if (viewType === 'grid') {
+                gridBtn.classList.add('active');
+                listBtn.classList.remove('active');
+                grid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(300px, 1fr))';
+            } else {
+                listBtn.classList.add('active');
+                gridBtn.classList.remove('active');
+                grid.style.gridTemplateColumns = '1fr';
+            }
+            
+            // Track view change
+            trackBehavior('view_changed', { viewType: viewType });
+        }
+
+        // Compare functionality
+        function addToCompare(productId) {
+            if (compareList.length >= 3) {
+                alert('You can compare up to 3 products at a time.');
+                return;
+            }
+            
+            if (!compareList.includes(productId)) {
+                compareList.push(productId);
+                updateComparePanel();
+                
+                trackBehavior('add_to_compare', { productId: productId });
+            }
+        }
+
+        function removeFromCompare(productId) {
+            compareList = compareList.filter(id => id !== productId);
+            updateComparePanel();
+        }
+
+        function updateComparePanel() {
+            const panel = document.getElementById('compare-panel');
+            const items = document.getElementById('compare-items');
+            
+            if (compareList.length === 0) {
+                panel.classList.remove('active');
+                return;
+            }
+            
+            panel.classList.add('active');
+            
+            items.innerHTML = compareList.map(productId => {
+                const product = products.find(p => p.id === productId);
+                return `
+                    <div class="compare-item">
+                        <img src="${product.image}" alt="${product.name}">
+                        <div>
+                            <div>${product.name}</div>
+                            <div>$${product.price}</div>
+                        </div>
+                        <button onclick="removeFromCompare('${productId}')">×</button>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function compareProducts() {
+            if (compareList.length < 2) {
+                alert('Please select at least 2 products to compare.');
+                return;
+            }
+            
+            const compareUrl = `compare.html?products=${compareList.join(',')}`;
+            window.location.href = compareUrl;
+            
+            trackBehavior('compare_products', {
+                productIds: compareList,
+                count: compareList.length
+            });
+        }
+
+        function clearCompare() {
+            compareList = [];
+            updateComparePanel();
+        }
+    </script>
+    
+    <script src="js/app.js"></script>
+    <script src="js/advanced-features.js"></script>
+    <script src="js/marketing-automation.js"></script>
+</body>
+</html>
